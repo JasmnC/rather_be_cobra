@@ -11,6 +11,7 @@ What are the basic data types available in Python?
 - boolean: bool
 - multiples: list, tuple, set, dict
 - others: bytes, bytearray, memoryview, NoneType
+* mixing data type, you get TypeError
 
 Why is indentation important in Python?
 - writing: it's a syntax requirement, it defindes code block
@@ -18,7 +19,21 @@ Why is indentation important in Python?
 - if not follow, we'll get IndentationError or TabError
 
 What happens when you try to mix incompatible data types in an operation?
+- TypeError
+
 What is Git Flow?
-Explain the difference between == and is operators
-What's the difference between implicit and explicit type conversion?
+- it's a branching model
+- helps manage development and release cycle
+- branches: main (<->hotfix) <- release <- develop (<-> feature)
+
+Operation == vs is 
+- checks values <-> checks referencce/memory
+
+
+Implicit vs explicit type conversion
+- automatic by compiler <-> by casting(by programmer)
+
 What's the difference between if x: and if x == True:?
+- concept of True-eveluating
+- for boolean type the same, for non-boolean type, if x first convert x into it's boolean equivalent
+- True: numerics not 0, multiples not empty, not None
