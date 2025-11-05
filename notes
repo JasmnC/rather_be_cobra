@@ -6,7 +6,17 @@ What is Python's main characteristic regarding syntax compared to other programm
 - community and supports: simple to learn and write, more Data/ML modules,packages, libraries
 
 What are the basic data types available in Python?
+- numeric: int, float, complex
+- text: str
+- boolean: bool
+- multiples: list, tuple, set, dict
+- others: bytes, bytearray, memoryview, NoneType
+
 Why is indentation important in Python?
+- writing: it's a syntax requirement, it defindes code block
+           readability, consistency, reduce ambiguilty
+- if not follow, we'll get IndentationError or TabError
+
 What happens when you try to mix incompatible data types in an operation?
 What is Git Flow?
 Explain the difference between == and is operators
