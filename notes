@@ -35,6 +35,8 @@ Implicit vs explicit type conversion
 
 What's the difference between if x: and if x == True:?
 - concept of True-eveluating
+- for boolean type the same, for non-boolean type, if x first convert x into it's boolean equivalent
+- True: numerics not 0, multiples not empty, not None
 
 Immutable                           vs mutable data types
 - int, float, bool, string         <-> list, set, dict
@@ -49,11 +51,29 @@ List operation:
 - list.extend([x,x]) adds an intereable at the end
 - list.insert(i,x) adds one element to specific index
 
-* Explain the difference between shallow copy and deep copy between `list.copy()`, `list[:]`, and `copy.deepcopy()`
-* What are the advantages and disadvantages of using set comprehensions vs converting a list comprehension to a set?
-* What's the time complexity difference between checking membership (`in` operator) in a list vs a set?
-* Why are tuples immutable but you can still modify a list inside a tuple?
-* What will `my_list[::2]`, `my_list[::-1]`, and `my_list[1::3]` return for `my_list = [0,1,2,3,4,5,6,7,8,9]`?
-* What's the difference between `remove()`, `pop()`, and `del` for lists?
-- for boolean type the same, for non-boolean type, if x first convert x into it's boolean equivalent
-- True: numerics not 0, multiples not empty, not None
+Shallow copy vs deep copy 
+- list.copy(), list[:] <-> copy.deepcopy()
+- copies referencing to same object <-> recursively constructs a new compound object and insert a copy of that object into the new compound object
+
+Set comprehensions   vs converting a list comprehension to a set?
+- fast, consistence <-> handles complex logics, takes intermediate process, debug
+
+What's the time complexity difference between checking membership (`in` operator) in a list vs a set?
+- list: linear, O(N)
+- set: hashbased look-up, O(1) -> it's based on a hash table but key is Null
+
+* Why are tuples immutable but you can still modify a list inside a tuple? -> because it's holding a reference
+-> means if the elements in a tuple is a mutable object, such as a list, then the contents of that mutable object can be modified
+-> The tuple itself still holds the same reference to that list object, but the list object's internal state can be altered because lists are mutable
+
+List slicing:
+- my_list[start:end:step]
+- ex: my_list = [0,1,2,3,4,5,6,7,8,9]
+      my_list[::2]  return [0, 2, 4, 6, 8]
+      my_list[::-1] return [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+      my_list[1::3] return [1, 4, 7]
+
+* What's the difference between remove(), `pop()`, and `del` for lists?
+List CRUD's U/D
+- del is an operation, use as 'del a[1]' or 
+
