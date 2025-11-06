@@ -75,5 +75,6 @@ List slicing:
 
 * What's the difference between remove(), `pop()`, and `del` for lists?
 List CRUD's U/D
-- del is an operation, use as 'del a[1]' or 
-
+- del is an operation, use as 'del a[1]', supports slicing, can remove by index or the whole list
+- remove() and pop() is method, remove() remove the fist matching value found 
+- pop() return and remove at the same time
