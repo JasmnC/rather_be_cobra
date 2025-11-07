@@ -109,5 +109,14 @@ In what order must you define parameters in a function signature?
 - def function_name(positional_only_param, /, positional_or_keyword_param, default_param=default_value, *args, keyword_only_param, **kwargs):
 
 What is the difference between the global and nonlocal keywords?
+- global keyword modifies a variable in the global scope (outside all functions)
+- while nonlocal keyword modifies a variable in the nearest enclosing non-global scope (an outer function's scope) within nested functions
+
 What is a common pitfall when using mutable default arguments?
+- default mutable object (like a list or dictionary) is created only once when the function is defined, and then it is shared and mutated across all subsequent calls that use the default
+- this leads to unexpected behavior where changes made during one function call persist into the next, and can be hard to debug. 
+- what do? use None
+
 What is a higher-order function? Give examples of built-in higher-order functions
+- either 1. takes another function as an argument or 2. returns a function as a result
+- common built-in ones: map(), filter(), sorted()
