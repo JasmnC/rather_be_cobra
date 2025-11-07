@@ -78,3 +78,36 @@ List CRUD's U/D
 - del is an operation, use as 'del a[1]', supports slicing, can remove by index or the whole list
 - remove() and pop() is method, remove() remove the fist matching value found 
 - pop() return and remove at the same time
+
+What is a lambda function, and how is it different from a regular function in Python?
+- small annomynous function, (may have multiple arguments) only one expression
+- syntax: 'lambda arguments : expression'
+
+What is the difference between *args and **kwargs in function definitions?
+- argument collectors
+- *args -> takes any number of arguments, and made the args into tuple
+- **kwargs -> take any number of KEYWORD arguemnts
+
+What is LEGB? Explain LEGB rule with a code example
+- They are scope levels, Local, Enclosing, Global, and Built-in, respectively
+- Scope of the name defines the region in the program where you can unambiguously acccess the name
+- local->body of the function or lambda expression; enclosing -> nested functions; global ->yopmost in an interactive session;
+  built-in -> whenever you run a session, like built-in functions, exceptions
+
+What is a closure in Python? How is it different from a regular nested function?
+- Closure is a specific type of nested function
+- Clouser can access variables that are local to enclosing scopes, and do so when they are executed outside of that scope
+
+What is the purpose of if __name__ == "__main__":?
+- provide clear entry point, prevent uninteded execution(like when it's imported as a module)
+
+Can you modify a global variable inside a function without using the global keyword?
+- No, if directly assigning, will return UnboundLocalError
+- what do -> use global keyword
+
+In what order must you define parameters in a function signature?
+- def function_name(positional_only_param, /, positional_or_keyword_param, default_param=default_value, *args, keyword_only_param, **kwargs):
+
+What is the difference between the global and nonlocal keywords?
+What is a common pitfall when using mutable default arguments?
+What is a higher-order function? Give examples of built-in higher-order functions
