@@ -120,3 +120,173 @@ What is a common pitfall when using mutable default arguments?
 What is a higher-order function? Give examples of built-in higher-order functions
 - either 1. takes another function as an argument or 2. returns a function as a result
 - common built-in ones: map(), filter(), sorted()
+
+
+### **1. Four Principles of OOP**
+
+1. **Encapsulation** – Bundling data (attributes) and methods (functions) that operate on that data into a single unit (class). It hides internal details from external access.
+2. **Abstraction** – Exposing only essential features while hiding the complex implementation details.
+3. **Inheritance** – Creating new classes from existing ones to reuse and extend functionality.
+4. **Polymorphism** – Allowing different objects to be treated through the same interface, where the same method behaves differently depending on the object.
+
+---
+
+### **2. `__str__` vs `__repr__`**
+
+* **`__str__`** → Returns a *user-friendly* string representation of an object, meant for readability (`str(obj)` or `print(obj)`).
+* **`__repr__`** → Returns a *developer-friendly* representation of an object, ideally one that can recreate the object (`repr(obj)` or in the REPL).
+
+**Example:**
+
+```python
+class Person:
+    def __str__(self):
+        return "Person object"
+    def __repr__(self):
+        return "Person(name='John', age=30)"
+```
+
+---
+
+### **3. Magic Methods like `__eq__`**
+
+Magic methods (dunder methods) define how built-in operators work for custom objects.
+
+* **`__eq__`** defines equality (`==`).
+* **`__lt__`**, `__gt__`, etc., define comparisons.
+
+**Example:**
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+```
+
+Now, `Point(1,2) == Point(1,2)` returns `True`.
+
+---
+
+### **4. `@classmethod` vs `@staticmethod`**
+
+* **`@classmethod`**
+
+  * Takes `cls` as the first parameter.
+  * Can access/modify *class-level* attributes.
+  * Used for alternative constructors.
+
+  ```python
+  class Circle:
+      def __init__(self, radius):
+          self.radius = radius
+      @classmethod
+      def from_diameter(cls, diameter):
+          return cls(diameter / 2)
+  ```
+* **`@staticmethod`**
+
+  * Takes no `self` or `cls`.
+  * A utility function logically related to the class but doesn’t access class or instance data.
+
+---
+
+### **5. Property Decorators**
+
+Property decorators (`@property`) let you use methods like attributes while keeping encapsulation.
+They’re used to control access, validation, or computed values.
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 9/5) + 32
+
+    @fahrenheit.setter
+    def fahrenheit(self, value):
+        self._celsius = (value - 32) * 5/9
+```
+
+---
+
+### **6. Public, Protected, Private Attributes**
+
+* **Public (`var`)** → Accessible anywhere.
+* **Protected (`_var`)** → Conventionally internal use (not enforced).
+* **Private (`__var`)** → Name-mangled to prevent accidental access (`_ClassName__var`).
+
+---
+
+### **7. Singleton Pattern**
+
+Ensures only one instance of a class exists.
+
+**Implementation:**
+
+```python
+class Singleton:
+    _instance = None
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+```
+
+---
+
+### **8. Factory Pattern**
+
+Creates objects without specifying the exact class of the object to be created.
+
+**Example:**
+
+```python
+class ShapeFactory:
+    def get_shape(self, shape_type):
+        if shape_type == "circle":
+            return Circle()
+        elif shape_type == "square":
+            return Square()
+```
+
+Used when object creation logic is complex or dynamic.
+
+---
+
+### **9. `self` Parameter**
+
+Refers to the current instance of the class.
+It allows access to instance attributes and methods.
+
+```python
+class Dog:
+    def bark(self):
+        print(f"{self} is barking!")
+```
+
+---
+
+### **10. Abstract Base Classes (ABC)**
+
+Used to define interfaces that derived classes must implement.
+Defined in `abc` module.
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof"
+```
+
+You can’t instantiate `Animal` directly — only subclasses that implement `speak()`.
+
