@@ -24,7 +24,6 @@ Explain the difference between using Annotated[Session, Depends(get_db)] vs Sess
 What's the difference between using requests and httpx for making HTTP calls in FastAPI, and why is httpx preferred in async contexts?
 - Requests HTTP does not support async requests
 
-
 What are the key differences in the database URL connection string when migrating from sync SQLAlchemy to async SQLAlchemy, and what driver changes are required for PostgreSQL?
 
 What is ASGI (Asynchronous Server Gateway Interface) and how does it differ from WSGI?
@@ -66,5 +65,8 @@ What is the N+1 query problem? How to avoid it in Django
 - prefetch_related() performs separate lookup and then "join" them in python
 
 What is the Meta class in Django models?
+- an inner class that provides metadata and configuration, to customize the models' behavior
+- ex: abstract, database table, model naming , model inheritence, proxy, permission and some read-oly labels
 
 What's the purpose of str() method in models?
+- you can call str() on a model instance, so it returns human readable representaion, good for admin, templates and logging
