@@ -38,15 +38,32 @@ How do you implement JWT authentication in FastAPI
 How does FastAPI handle synchronous functions differently?
 
 Django
-What is Django's MTV pattern?
+What is Django's MVT pattern?
+- Model-View-Template architecture pattern
+- Model is the data layer -> defines structure of the database and handle data-related logics
+- View is the business logic layer -> process income user request and prepare the data that needs to be display
+- Template is the the presenting layer -> combines static content with dynamic data
 
 What's the difference between blank=True and null=True?
+-they are field options
+- null=True is used in the database schema to allow null value -> database level constrains
+- blank=True is form validation, so the field can be empty in form submission -> optional form fields
 
 What's the difference between auto_now and auto_now_add?
+- these are built-in field date time options
+- auto_now updates everytime an object is saved -> track last modified
+- auto_now_add saves timestemp when the row first added -> track create time
 
 What are Django migrations and why are they important?
+- it's a version control, to manage changes to Django application database schema and data, core concept of ORM
+- when make changes to Django models run "makemigrations" to create migration files, then migrate apply the changes
+- importent because it operates at the applicatio nand database level
 
 What is the N+1 query problem? How to avoid it in Django
+- This is a performance issue, think of it like 1+N query, we perform 1 parent query, and each entity in parent query needs to fetch it's related child entities
+- 2 ways to solve in Django:
+- select_related() performs a SQL join to avoid subsequesnt individual queries
+- prefetch_related() performs separate lookup and then "join" them in python
 
 What is the Meta class in Django models?
 
