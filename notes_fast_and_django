@@ -25,16 +25,34 @@ What's the difference between using requests and httpx for making HTTP calls in 
 - Requests HTTP does not support async requests
 
 What are the key differences in the database URL connection string when migrating from sync SQLAlchemy to async SQLAlchemy, and what driver changes are required for PostgreSQL?
+- main change is dialect and driver specification
+- psycopg2 for sync
+- asyncpg for async
 
 What is ASGI (Asynchronous Server Gateway Interface) and how does it differ from WSGI?
+- they are gateway interface for python
+- WSGI Web Server Gateway Interface: sync, blocking I/O, traditional HTTP -> simple web app with low traffic, not real-time feature
+- ASGI Asyncronized Server Gateway Interface: async, non-blocking I/O, supports modern protocals and suitable for high-traffice, real-time appplication
 
 How is FastAPI different from Flask?
+- leverages asyncio for high performance
+- well-established endpoint ->pydantic -> database paradigm
+- flask is more like "do whatever you want", easy flexible but low performance, only use when you need a static or a very very basic dynamic page
 
 Explain the difference between response_model, response_model_exclude, and response_model_include in FastAPI route decorators. When would you use each?
+- response_model: when you want to define the structure and types of data to be return
+- response_model_include: when you have comprehensive response_model and only what to return a subset of the fields
+- response_model_exclude: when you have response_model and want to exlude specific fields
 
 How do you implement JWT authentication in FastAPI
+1. instal dependency
+2. configuration
+3. User model and database
+4. Utility functions for password hashing and JWT handling
+5. Set up Fast API endpoints
 
 How does FastAPI handle synchronous functions differently?
+- run in external thread pool (not on main asynchronous event loop)
 
 Django
 What is Django's MVT pattern?
