@@ -8,8 +8,12 @@ Explain the difference between def and async def in FastAPI route handlers. When
 - async def is coroutine and can be safely pause and resume -> good for I/O-bound operation
 
 What is dependency injection in FastAPI and how does it work behind the scene?
+- it's to declare dependencies
+- use depends in your path operation function, declare a parameter and assign it Depends() with the dependency callable
 
 How does FastAPI achieve automatic API documentation?
+- Swagger
+- use /docs
 
 Explain the difference between Path, Query, Header, Body, and Cookie parameters in FastAPI.
 
